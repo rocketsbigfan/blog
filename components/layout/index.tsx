@@ -5,7 +5,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 const name = 'Harden';
-export const siteTitle = 'Hao\'s Blog';
+export const siteTitle = 'Hao\'s Blog new';
 
 export default function Layout({ children, home }: { children: React.ReactNode, home?: boolean }) {
   return (
