@@ -1,0 +1,37 @@
+# 工作流名称
+name: Auto Merge Feature Branches to Master
+
+# 触发条件
+on:
+  push:
+    branches:
+      - feature/*  # 当推送到任何 feature/ 开头的分支时触发
+
+jobs:
+  auto_merge:
+    runs-on: ubuntu-latest  # 在 Ubuntu 最新版本上运行
+
+    steps:
+      # 步骤 1: 检出代码
+      - name: Checkout Repository
+        uses: actions/checkout@v3  # 使用官方的 checkout action
+
+      # 步骤 2: 配置 Git 用户信息
+      - name: Configure Git
+        run: |
+          git config user.name "GitHub Action Bot"   # 设置提交者名称
+          git config user.email "bot@github.com"     # 设置提交者邮箱
+
+      # 步骤 3: 获取 master 分支最新代码
+      - name: Fetch Master
+        run: git fetch origin master
+
+      # 步骤 4: 执行合并操作
+      - name: Merge Feature Branch to Master
+        run: |
+          git checkout master                        # 切换到 master 分支
+          # 合并当前 feature 分支到 master
+          # --no-ff 表示强制创建合并提交
+          # -m 指定提交信息
+          git merge origin/${{ github.ref_name }} --no-ff -m "Auto-merged ${{ github.ref_name }} into master"
+          git push origin master                     # 推送到远程 master 分支
