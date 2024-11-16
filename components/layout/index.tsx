@@ -3,7 +3,6 @@ import styles from './index.module.css';
 import utilStyles from '../../styles/utils.module.css';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useTheme } from 'next-themes';
 import ThemeToggle from '../ThemeToggle';
 
 const name = 'Harden';
