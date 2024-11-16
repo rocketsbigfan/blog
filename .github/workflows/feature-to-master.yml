@@ -13,11 +13,14 @@ jobs:
     permissions:
       contents: write      # 允许推送代码
       issues: write       # 允许创建 issues
-      
+
     steps:
       # 步骤 1: 检出代码
       - name: Checkout Repository
         uses: actions/checkout@v3  # 使用官方的 checkout action
+        with:
+          fetch-depth: 0  # 获取完整历史记录
+          ref: master    # 直接检出 master 分支
 
       # 步骤 2: 配置 Git 用户信息
       - name: Configure Git
