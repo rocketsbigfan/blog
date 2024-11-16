@@ -7,7 +7,7 @@ export default function App({ Component, pageProps }) {
       enableSystem={true}
       attribute="class"
       // attribute="data-theme"
-      // defaultTheme="dark"
+      defaultTheme="dark"
     >
       <Component {...pageProps} />
     </ThemeProvider>
