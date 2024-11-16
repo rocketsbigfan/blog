@@ -3,6 +3,15 @@ import path from 'path';
 import matter from 'gray-matter';
 import { remark} from 'remark'
 import html from 'remark-html'
+import readingTime from 'reading-time';
+import dayjs from 'dayjs';
+import duration from 'dayjs/plugin/duration';
+import RelativeTime from 'dayjs/plugin/relativeTime';
+import 'dayjs/locale/zh-cn';
+
+dayjs.extend(duration);
+dayjs.extend(RelativeTime);
+dayjs.locale('zh-cn');
 
 // 获取posts目录
 const postsDirectory = path.join(process.cwd(), 'posts');
@@ -44,12 +53,14 @@ export async function getPostData(id: string) {
   const processedContent = await remark()
     .use(html)
     .process(matterResult.content)
-
+  const readTime = await readingTime(matterResult.content)
   const contentHtml = processedContent.toString()
-
+  const duration = dayjs.duration(readTime.minutes, 'minutes');
   return {
     id,
+    content: matterResult.content,
     contentHtml,
+    readTime: duration.humanize(),
     ...matterResult.data,
   };
 }
