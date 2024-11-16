@@ -10,7 +10,10 @@ on:
 jobs:
   auto_merge:
     runs-on: ubuntu-latest  # 在 Ubuntu 最新版本上运行
-
+    permissions:
+      contents: write      # 允许推送代码
+      issues: write       # 允许创建 issues
+      
     steps:
       # 步骤 1: 检出代码
       - name: Checkout Repository
