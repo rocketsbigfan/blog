@@ -1,9 +1,9 @@
 import Head from 'next/head';
-import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
 import Date from '../components/Date';
+import Layout, { siteTitle } from '../components/Layout';
 
 interface HomeProps {
   allPostsData: {
@@ -26,7 +26,7 @@ export default function Home({ allPostsData }: HomeProps) {
       <main>
         {allPostsData.map(({ id, date, title }) => (
           <li className={utilStyles.listItem} key={id}>
-            <Link href={`/posts/${id}`}>
+            <Link href={`/posts/${id}`} className='text-link dark:text-white'>
               <span>{title}</span>
             </Link>
             <br />

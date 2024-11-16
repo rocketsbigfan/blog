@@ -3,11 +3,13 @@ import styles from './index.module.css';
 import utilStyles from '../../styles/utils.module.css';
 import Head from 'next/head';
 import Link from 'next/link';
+import ThemeToggle from '../ThemeToggle';
 
 const name = 'Harden';
-export const siteTitle = 'Hao\'s Blog';
+export const siteTitle = 'Hao\'s Blog new';
 
 export default function Layout({ children, home }: { children: React.ReactNode, home?: boolean }) {
+
   return (
     <div className={styles.container}>
       <Head>
@@ -24,18 +26,19 @@ export default function Layout({ children, home }: { children: React.ReactNode, 
         />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
-      </Head><header className={styles.header}>
+      </Head>
+      <header className={styles.header}>
         {home ? (
-          <>
+          <div>
             <img
               src="/images/profile.jpg"
               className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
               alt={name}
             />
             <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
+          </div>
         ) : (
-          <>
+          <div>
             <Link href="/">
               <img
                 src="/images/profile.jpg"
@@ -48,8 +51,9 @@ export default function Layout({ children, home }: { children: React.ReactNode, 
                 <span className={utilStyles.colorInherit}>{name}</span>
               </Link>
             </h2>
-          </>
+          </div>
         )}
+        <ThemeToggle />
       </header>
       <main>
         {children}
