@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './index.module.css';
-import utilStyles from '../../styles/utils.module.css';
 import Head from 'next/head';
 import Link from 'next/link';
 import ThemeToggle from '../ThemeToggle';
@@ -27,39 +26,39 @@ export default function Layout({ children, home }: { children: React.ReactNode, 
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
+      <header className="flex justify-between items-center">
         {home ? (
           <div>
             <img
               src="/images/profile.jpg"
-              className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
+              className={`w-24 h-24 rounded-full`}
               alt={name}
             />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
+            <h1 className="text-2xl font-bold">{name}</h1>
           </div>
         ) : (
           <div>
             <Link href="/">
               <img
                 src="/images/profile.jpg"
-                className={`${styles.headerImage} ${utilStyles.borderCircle}`}
+                className={`w-24 h-24 rounded-full`}
                 alt={name}
               />
             </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <span className={utilStyles.colorInherit}>{name}</span>
+            <h2 className="text-2xl font-bold">
+              <Link className="text-black dark:text-white" href="/">
+                <span>{name}</span>
               </Link>
             </h2>
           </div>
         )}
         <ThemeToggle />
       </header>
-      <main>
+      <main className="mt-6">
         {children}
       </main>
       {!home && (
-        <div className={styles.backToHome}>
+        <div className="my-12">
           <Link href="/">
             <span>← Back to home</span>
           </Link>
