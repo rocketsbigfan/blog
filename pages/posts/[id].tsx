@@ -1,13 +1,15 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { MDXRemote } from "next-mdx-remote/rsc";
+import Markdown from 'react-markdown';
 import rehypePrism from "rehype-prism-plus";
 import remarkGfm from "remark-gfm";
 
 import Layout from '../../components/Layout'
 import { getAllPostIds, getPostData } from '../../lib/posts';
 import Date from '../../components/Date';
+
 import utilStyles from '../../styles/utils.module.css';
-import { useRouter } from 'next/router';
 export default function Post({ postData }: {
   postData: {
     id: string;
@@ -34,8 +36,7 @@ export default function Post({ postData }: {
         <span className="ml-2 text-sm">{postData.readTime ? `建议阅读时间：${postData.readTime}` : ''}</span>
       </div>
       <article className='prose dark:prose-invert'>
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-
+        {/* <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} /> */}
         {/* <MDXRemote
           // source={postData.content}
           // options={{
@@ -49,6 +50,12 @@ export default function Post({ postData }: {
         {/* <MDXRemote
           source={postData.content}
         /> */}
+        <Markdown
+          remarkPlugins={[remarkGfm]}
+          rehypePlugins={[rehypePrism]}
+        >
+            {postData.content}
+        </Markdown>
       </article>
     </Layout>
   )
