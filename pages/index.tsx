@@ -19,7 +19,7 @@ export default function Home({ allPostsData }: HomeProps) {
         <title>{siteTitle}</title>
       </Head>
 
-      <section className={utilStyles.headingMd}>
+      <section className="text-2xl font-bold mb-4">
         <p>Hao's Blog</p>
       </section>
 

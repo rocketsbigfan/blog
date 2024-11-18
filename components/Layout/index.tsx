@@ -54,7 +54,7 @@ export default function Layout({ children, home }: { children: React.ReactNode, 
         )}
         <ThemeToggle />
       </header>
-      <main className="mt-6">
+      <main className="mt-4">
         {children}
       </main>
       {!home && (

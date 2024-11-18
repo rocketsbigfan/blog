@@ -11,6 +11,7 @@ import ImageWithZoom from '../../components/ImageWithZoom';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 
 import utilStyles from '../../styles/utils.module.css';
+import MDLink from '../../components/MDLink';
 export default function Post({ postData }: {
   postData: {
     id: string;
@@ -36,7 +37,7 @@ export default function Post({ postData }: {
         <Date dateString={postData.date} />
         <span className="ml-2 text-sm">{postData.readTime ? `建议阅读时间：${postData.readTime}` : ''}</span>
       </div>
-      <article className='prose dark:prose-invert'>
+      <article className='prose dark:prose-invert !max-w-[60vw]'>
         {/* <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} /> */}
         {/* <MDXRemote
           // source={postData.content}
@@ -56,6 +57,7 @@ export default function Post({ postData }: {
           rehypePlugins={[rehypePrism]}
           components={{
             img: ImageWithZoom,
+            a: MDLink,
           }}
         >
             {postData.content}
