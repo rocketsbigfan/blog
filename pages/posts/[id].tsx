@@ -11,6 +11,7 @@ import ImageWithZoom from '../../components/ImageWithZoom';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 
 import utilStyles from '../../styles/utils.module.css';
+import MDLink from '../../components/MDLink';
 export default function Post({ postData }: {
   postData: {
     id: string;
@@ -56,6 +57,7 @@ export default function Post({ postData }: {
           rehypePlugins={[rehypePrism]}
           components={{
             img: ImageWithZoom,
+            a: MDLink,
           }}
         >
             {postData.content}
