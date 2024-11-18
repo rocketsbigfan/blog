@@ -5,8 +5,6 @@ date: '2024-11-18'
 
 有点标题党啦。其实文章就是个开发总结。
 
-![1e8bb20d-8a97-463a-af3d-f939d1a877e6.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/28497ebfd4a34124ba001d564f6e56a9~tplv-k3u1fbpfcp-watermark.image)
-
 ## 前言
 
 最近我司有个多语言需求，考虑到一个个手动替换，不是个好方法，通过查找资料，咱就找到了[字节前端如何基于 AST 做国际化重构？](https://mp.weixin.qq.com/s/O7HaOKBGMXwaE3KkqANX3A?forceh5=1)，这篇文章，恰好能很好的解决需求。所以看完文章就立马准备上手了。
@@ -33,7 +31,7 @@ jscodeshift的优点：
 以下，是代码中出现中文最常见的几种情景（待补充..
 
 ```javascript
-function A(c: string) {
+function Test(c: string) {
   // 经过实验，注释不会出现在ast中
   let templateStr = `模版字符串中出现中文${x}美${y}犹犹`
   const zh = '中文'
@@ -56,8 +54,8 @@ function A(c: string) {
 普通字面量：StringLiteral；
 ```
 
-![WeChat09a109b756d95a58a0889d740e1f5c70.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/48ec022dbde842199d765ea2e7774148~tplv-k3u1fbpfcp-watermark.image)
-![WeChat84aac008033cee4196e4eeabaa84d7e1.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a1c60a4456fb4dd08752c0a6412126ce~tplv-k3u1fbpfcp-watermark.image)
+![WeChat09a109b756d95a58a0889d740e1f5c70.png](/images/posts/code-refactor/image-1.image)
+![WeChat84aac008033cee4196e4eeabaa84d7e1.png](/images/posts/code-refactor/image-2.image)
 
 找出对应数据集合：
 
@@ -158,7 +156,7 @@ module.exports = function (file, api) {
 
 大功告成
 
-![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/79ba3816885d4cc89b9602c4edfd218f~tplv-k3u1fbpfcp-watermark.image)
+![image.png](/images/posts/code-refactor/image-3.image)
 
 ### 4.处理多个文件
 
@@ -232,4 +230,4 @@ github地址：[translate-mod](https://github.com/rocketsbigfan/translate-mod)
 
 谢谢大家！！
 
-![aec59196-6adb-418d-a94c-d8df84944645.gif](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b0e03aab52384de48ec79c6611ad48e9~tplv-k3u1fbpfcp-watermark.image)
+![aec59196-6adb-418d-a94c-d8df84944645.gif](/images/posts/code-refactor/image-4.image)
