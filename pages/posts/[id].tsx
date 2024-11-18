@@ -6,8 +6,9 @@ import rehypePrism from "rehype-prism-plus";
 import remarkGfm from "remark-gfm";
 
 import Layout from '../../components/Layout'
-import { getAllPostIds, getPostData } from '../../lib/posts';
 import Date from '../../components/Date';
+import ImageWithZoom from '../../components/ImageWithZoom';
+import { getAllPostIds, getPostData } from '../../lib/posts';
 
 import utilStyles from '../../styles/utils.module.css';
 export default function Post({ postData }: {
@@ -53,6 +54,9 @@ export default function Post({ postData }: {
         <Markdown
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[rehypePrism]}
+          components={{
+            img: ImageWithZoom,
+          }}
         >
             {postData.content}
         </Markdown>

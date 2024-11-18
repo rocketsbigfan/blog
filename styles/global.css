@@ -29,3 +29,12 @@ img {
   max-width: 100%;
   display: block;
 }
+
+.md-dialog [data-rmiz-modal-overlay="visible"] {
+  background-color: rgb(0, 0, 0, 0.8);
+}
+.md-dialog [data-rmiz-btn-zoom],
+.md-dialog [data-rmiz-btn-unzoom] {
+  background-color: transparent;
+  box-shadow: none;
+}
