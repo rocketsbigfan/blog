@@ -35,6 +35,9 @@ dependencies:
   react-markdown:
     specifier: ^9.0.1
     version: 9.0.1(@types/react@18.3.12)(react@18.2.0)
+  react-medium-image-zoom:
+    specifier: ^5.2.11
+    version: 5.2.11(react-dom@18.2.0)(react@18.2.0)
   reading-time:
     specifier: ^1.5.0
     version: 1.5.0
@@ -2160,6 +2163,16 @@ packages:
       vfile: 6.0.3
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /react-medium-image-zoom@5.2.11(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-K3REdn96k2H+6iQlRSl7C7O5lMhdhRx3W1NFJXRar6wMeHpOwp5wI/6N0SfuF/NiKu+HIPxY0FSdvMIJwynTCw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /react@18.2.0:

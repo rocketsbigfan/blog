@@ -16,6 +16,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-markdown": "^9.0.1",
+    "react-medium-image-zoom": "^5.2.11",
     "reading-time": "^1.5.0",
     "rehype-prism-plus": "^2.0.0",
     "remark": "^15.0.1",
