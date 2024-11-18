@@ -37,7 +37,7 @@ export default function Post({ postData }: {
         <Date dateString={postData.date} />
         <span className="ml-2 text-sm">{postData.readTime ? `建议阅读时间：${postData.readTime}` : ''}</span>
       </div>
-      <article className='prose dark:prose-invert'>
+      <article className='prose dark:prose-invert !max-w-[60vw]'>
         {/* <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} /> */}
         {/* <MDXRemote
           // source={postData.content}
