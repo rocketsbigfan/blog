@@ -26,7 +26,6 @@ export default async function handler(
     const ip_address =
       req.headers["x-forwarded-for"] || req.socket.remoteAddress || null;
     const { blog_id } = req.body;
-    console.log('req.body: ', req.body);
     const user_agent = req.headers["user-agent"] || null;
     // 检查请求体中的 blog_id 和 user_ip 是否存在
     if (!blog_id) {
