@@ -11,7 +11,7 @@ body {
   line-height: 1.6;
   font-size: 18px;
 }
-html {
+html:not(.dark) {
   background-color: #e5e5e5;
 }
 * {
