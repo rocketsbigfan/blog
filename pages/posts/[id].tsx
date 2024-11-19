@@ -4,14 +4,17 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import Markdown from 'react-markdown';
 import rehypePrism from "rehype-prism-plus";
 import remarkGfm from "remark-gfm";
+import { useEffect, useState } from 'react';
 
 import Layout from '../../components/Layout'
 import Date from '../../components/Date';
 import ImageWithZoom from '../../components/ImageWithZoom';
+import MDLink from '../../components/MDLink';
 import { getAllPostIds, getPostData } from '../../lib/posts';
+import { getBlogVisits, postBlogVisits } from '../../lib/api';
 
 import utilStyles from '../../styles/utils.module.css';
-import MDLink from '../../components/MDLink';
+
 export default function Post({ postData }: {
   postData: {
     id: string;
@@ -22,11 +25,17 @@ export default function Post({ postData }: {
     readTime: string;
   }
 }) {
+  const [blogVisits, setBlogVisits] = useState(0);
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>
   }
-
+  useEffect(() => {
+    postBlogVisits(postData.id)
+    getBlogVisits(postData.id).then(res => {
+      setBlogVisits(res.length);
+    })
+  }, [])
   return (
     <Layout>
       <Head>
@@ -35,7 +44,10 @@ export default function Post({ postData }: {
       <h1 className={utilStyles.headingXl}>{postData.title}</h1>
       <div className="text-gray-500 flex justify-between">
         <Date dateString={postData.date} />
-        <span className="ml-2 text-sm">{postData.readTime ? `建议阅读时间：${postData.readTime}` : ''}</span>
+        <div>
+          <span className="ml-2 text-sm">{postData.readTime ? `建议阅读时间：${postData.readTime}` : ''}</span>
+          <span className="ml-2 text-sm">访问量：{blogVisits}</span>
+        </div>
       </div>
       <article className='prose dark:prose-invert !max-w-[60vw]'>
         {/* <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} /> */}
@@ -65,7 +77,6 @@ export default function Post({ postData }: {
       </article>
     </Layout>
   )
-
 }
 // 获取所有文章的id
 export async function getStaticPaths() {
