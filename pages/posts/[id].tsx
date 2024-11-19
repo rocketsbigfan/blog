@@ -49,7 +49,7 @@ export default function Post({ postData }: {
           <span className="ml-2 text-sm">访问量：{blogVisits}</span>
         </div>
       </div>
-      <article className='prose dark:prose-invert !max-w-[60vw]'>
+      <article className='prose dark:prose-invert !max-w-full'>
         {/* <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} /> */}
         {/* <MDXRemote
           // source={postData.content}

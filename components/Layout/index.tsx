@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import ThemeToggle from '../ThemeToggle';
 import drawAnimation from './animate';
+import classNames from 'classnames';
 const name = 'Harden';
 export const siteTitle = 'Hao\'s Blog test';
 
@@ -34,7 +35,7 @@ export default function Layout({ children, home }: { children: React.ReactNode, 
 
   return (
     <>
-      <div className={styles.container}>
+      <div className={classNames(styles.container, 'max-md:!w-full')}>
         <Head>
           <link rel="icon" href="/favicon.ico" />
           <meta
