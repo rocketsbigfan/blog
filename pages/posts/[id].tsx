@@ -84,7 +84,7 @@ export async function getStaticPaths() {
   const paths = await getAllPostIds();
   return {
     paths,
-    // true 表示在构建时不会生成所有路径，而是在运行时动态生成
+    // true 表示在构建时不会生成所有路径，而是在运行时动态生成 ISG
     fallback: false, // 预构建，如果路径不存在，则返回404
   };
 }
@@ -93,6 +93,6 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
   const postData = await getPostData(params.id);
   return {
     props: { postData },
-    revalidate: 1,
+    revalidate: 1, // 1秒后重新生成页面
   };
 }
