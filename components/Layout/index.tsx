@@ -3,7 +3,6 @@ import styles from './index.module.css';
 import Head from 'next/head';
 import Link from 'next/link';
 import ThemeToggle from '../ThemeToggle';
-import drawAnimation from './animate';
 import classNames from 'classnames';
 const name = 'Harden';
 export const siteTitle = 'Hao\'s Blog test';
@@ -54,12 +53,14 @@ export default function Layout({ children, home }: { children: React.ReactNode, 
         <header className="flex justify-between items-center">
           {home ? (
             <div>
-              <img
-                src="/images/profile.jpg"
+              <Link href="/about" className="text-black dark:text-white">
+                <img
+                  src="/images/profile.jpg"
                 className={`w-24 h-24 rounded-full`}
                 alt={name}
               />
-              <h1 className="text-2xl font-bold">{name}</h1>
+                <h1 className="text-2xl font-bold">{name}</h1>
+              </Link>
             </div>
           ) : (
             <div>
