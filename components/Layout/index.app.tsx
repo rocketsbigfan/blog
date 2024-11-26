@@ -4,7 +4,6 @@ import Link from 'next/link';
 import ThemeToggle from '../ThemeToggle';
 import classNames from 'classnames';
 const name = 'Harden';
-export const siteTitle = 'Hao\'s Blog test';
 
 export default function Layout({ children }: { children: React.ReactNode, home?: boolean }) {
   return (
