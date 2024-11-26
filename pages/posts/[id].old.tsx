@@ -1,10 +1,10 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { MDXRemote } from "next-mdx-remote/rsc";
+import { useEffect, useState } from 'react';
 import Markdown from 'react-markdown';
 import rehypePrism from "rehype-prism-plus";
 import remarkGfm from "remark-gfm";
-import { useEffect, useState } from 'react';
 
 import Layout from '../../components/Layout'
 import Date from '../../components/Date';
