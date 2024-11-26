@@ -5,7 +5,6 @@ import Link from 'next/link';
 import ThemeToggle from '../ThemeToggle';
 import classNames from 'classnames';
 const name = 'Harden';
-export const siteTitle = 'Hao\'s Blog test';
 
 export default function Layout({ children, home }: { children: React.ReactNode, home?: boolean }) {
 
@@ -44,10 +43,10 @@ export default function Layout({ children, home }: { children: React.ReactNode, 
           <meta
             property="og:image"
             content={`https://og-image.now.sh/${encodeURI(
-              siteTitle
+              process.env.NEXT_PUBLIC_SITE_TITLE
             )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
           />
-          <meta name="og:title" content={siteTitle} />
+          <meta name="og:title" content={process.env.NEXT_PUBLIC_SITE_TITLE} />
           <meta name="twitter:card" content="summary_large_image" />
         </Head>
         <header className="flex justify-between items-center">

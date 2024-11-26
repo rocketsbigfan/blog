@@ -3,7 +3,8 @@ import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
 import Date from '../components/Date';
-import Layout, { siteTitle } from '../components/Layout';
+import Layout from '../components/Layout';
+import { useState } from 'react';
 
 interface HomeProps {
   allPostsData: {
@@ -13,10 +14,14 @@ interface HomeProps {
 }
 
 export default function Home({ allPostsData }: HomeProps) {
+
+  // const [open, setOpen] = useState(false);
+  // console.log('open: ', open);
+
   return (
     <Layout home>
       <Head>
-        <title>{siteTitle}</title>
+        <title>{process.env.NEXT_PUBLIC_SITE_TITLE}</title>
       </Head>
 
       <section className="text-2xl font-bold mb-4">
