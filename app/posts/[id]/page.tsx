@@ -21,7 +21,7 @@ type PostData = {
 // 禁用动态参数
 export const dynamicParams = false;
 
-export const generateMetadata = async ({ params }: { params: { id: string } }) => {
+export const generateMetadata = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params
   const postData: PostData = await getPostData(id);
 
@@ -35,10 +35,10 @@ export const generateStaticParams = async () => {
   return paths.map((params) => ({ id: params.params.id }));
 }
 
-export default async function Post({ params }: { params: { id: string } }) {
+export default async function Post({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
   const postData: PostData = await getPostData(id);
-  
+
   return <Layout>
     <h1 className={utilStyles.headingXl}>{postData.title}</h1>
     <div className="text-gray-500 flex justify-between">
