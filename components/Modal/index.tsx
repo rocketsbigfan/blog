@@ -29,8 +29,8 @@ export default function Modal({ children, open, title, routerBack, onClose }: Mo
     className={classNames(styles.modal, "fixed inset-0 z-50")}
   >
     <div className={classNames(styles.modalOverlay, "fixed w-full h-full bg-black bg-opacity-50 transition-opacity duration-300")}></div> 
-    <div className={classNames(styles.modalWrapper, "max-md:!w-full max-md:!h-full w-[60vw] h-[80vh] bg-white fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 rounded-lg overflow-y-auto")}>
-      <div className={classNames(styles.modalHeader, "rounded-t-lg rounded-s-lg flex justify-between items-center sticky top-0 bg-white px-4 py-2")}>
+    <div className={classNames(styles.modalWrapper, "max-md:!w-full max-md:!h-full w-[60vw] h-[80vh] bg-white dark:bg-gray-900 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 rounded-lg overflow-y-auto")}>
+      <div className={classNames(styles.modalHeader, "rounded-t-lg rounded-s-lg flex justify-between items-center sticky top-0 bg-white dark:bg-gray-900 px-4 py-2")}>
         <div className={classNames(styles.modalTitle, "text-xl font-bold")}>
           <h2>{title}</h2>
         </div>
