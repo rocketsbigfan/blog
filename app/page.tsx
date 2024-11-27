@@ -16,7 +16,7 @@ export default async function Home() {
     <section className="text-2xl font-bold mb-4">
       <p>Hao's Blog</p>
     </section>
-    <main>
+    <section>
       {allPostsData.map(({ id, date, title }) => (
         <li className={utilStyles.listItem} key={id}>
           <Link href={`/posts/${id}`} className='text-link dark:text-white'>
@@ -28,6 +28,6 @@ export default async function Home() {
           </small>
         </li>
       ))}
-    </main>
+    </section>
   </Layout>
 }
