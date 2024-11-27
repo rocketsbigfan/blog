@@ -1,5 +1,3 @@
-import { notFound } from 'next/navigation';
-
 import Date from "@/components/Date";
 import Layout from "@/components/Layout/index.app";
 
@@ -10,7 +8,7 @@ import { getAllPostIds, getPostData } from "@/lib/posts";
 
 import utilStyles from '@/styles/utils.module.css';
 
-type PostData = {
+export type PostData = {
   id?: string;
   title?: string;
   date?: string;

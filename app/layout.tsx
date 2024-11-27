@@ -17,14 +17,14 @@ export const metadata = {
     },
   },
 }
-export default function RootLayout({
-  children,
-}: {
+export default function RootLayout(props: {
   children: React.ReactNode
+  modal: React.ReactNode
 }) {
+  const { children, modal } = props
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" suppressHydrationWarning>
+      <body className="w-full h-full">
         <ThemeProvider
           enableSystem={true}
           attribute="class"
@@ -32,6 +32,7 @@ export default function RootLayout({
         >
           {/* Layout UI */}
           {children}
+          {modal}
         </ThemeProvider>
       </body>
     </html>
