@@ -3,6 +3,8 @@ import styles from './index.module.css';
 import Link from 'next/link';
 import ThemeToggle from '../ThemeToggle';
 import classNames from 'classnames';
+import LoginForm from '../LoginForm';
+import { getCurrentUser } from '@/lib/session';
 const name = 'Harden';
 
 export const metadata = {
@@ -22,8 +24,8 @@ export const metadata = {
   },
 }
 
-export default function Layout({ children, home }: { children?: React.ReactNode, home?: boolean }) {
-
+export default async function Layout({ children, home }: { children?: React.ReactNode, home?: boolean }) {
+  const user = await getCurrentUser();
   return (
     <>
       <div className={classNames(styles.container, 'max-md:!w-full')}>
@@ -39,7 +41,10 @@ export default function Layout({ children, home }: { children?: React.ReactNode,
                 <span className="ml-2 text-xl font-bold ">{name}</span>
               </div>
             </Link>
-            <ThemeToggle />
+            <div className="flex items-center">
+              <ThemeToggle />
+              <LoginForm user={user} />
+            </div>
           </div>
         </header >
         <main className="my-40">
