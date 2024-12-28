@@ -1,6 +1,7 @@
 
 import { AuthOptions } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
+import { upsertRecord } from "./supabase";
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -8,7 +9,7 @@ export const authOptions: AuthOptions = {
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
       httpOptions: {
-        timeout: 15000,
+        timeout: 30000,
       },
     }),
   ],  
@@ -22,10 +23,22 @@ export const authOptions: AuthOptions = {
   },
   callbacks: {
     async session({ session, token }) {
-      console.log('token: ', token);
-      // if (session?.user) {
-      //   session.user.id = token.sub as string;
-      // }
+      await upsertRecord<'user'>('user', {
+        sub: token.sub as string
+      }, {
+        avatar: token.picture as string,
+        email: token.email as string,
+        username: token.name as string,
+      }, {
+        avatar: token.picture as string,
+        email: token.email as string,
+        platform: 'github',
+        sub: token.sub as string,
+        username: token.name as string,
+      }, (operation, data) => {
+        console.log('operation: ', operation, data);
+      });
+      
       return session;
     },
   },
