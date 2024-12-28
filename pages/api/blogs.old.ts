@@ -10,7 +10,7 @@ export default async function handler(
   if (req.method === "GET") {
     try {
       // 从 Supabase 获取数据
-      const { data, error } = await supabase.from("blog_visits").select("*").eq("blog_id", req.query.blog_id);
+      const { data, error } = await supabase.from("blog_visits").select("*").eq("blog_id", req.query.blog_id as string);
       // 如果查询出错，返回 500 错误
       if (error) {
         return res.status(500).json({ error: error.message });
@@ -37,8 +37,12 @@ export default async function handler(
     try {
       // 向 Supabase 插入一条访问记录
       const { data, error } = await supabase
-        .from("blog_visits") // 假设访问记录存储在 'blog_visits' 表中
-        .insert([{ blog_id, ip_address, user_agent }]); // 记录当前时间作为访问时间
+        .from("blog_visits")
+        .insert({
+          blog_id: blog_id as string,
+          ip_address: typeof ip_address === 'string' ? ip_address : null,
+          user_agent
+        });
 
       // 如果插入过程中出现错误，返回 500 错误
       if (error) {

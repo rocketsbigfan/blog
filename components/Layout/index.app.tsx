@@ -29,8 +29,8 @@ export default async function Layout({ children, home }: { children?: React.Reac
   return (
     <>
       <div className={classNames(styles.container, 'max-md:!w-full')}>
-        <header className="fixed top-0 left-0 w-full py-4 filter backdrop-blur-sm">
-          <div className="flex justify-between items-center w-[60vw] mx-auto">
+        <header className="fixed top-0 left-0 w-full max-md:!w-full py-4 filter backdrop-blur-sm">
+          <div className="flex justify-between items-center w-[60vw] max-md:px-4 mx-auto">
             <Link href={home ? '/about' : '/'} className="text-black dark:text-white">
               <div className="flex items-center">
                 <img
