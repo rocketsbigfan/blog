@@ -24,43 +24,53 @@ export const metadata = {
   },
 }
 
-export default async function Layout({ children, home }: { children?: React.ReactNode, home?: boolean }) {
-  const user = await getCurrentUser();
+export default function Layout({ children, home }: { children?: React.ReactNode, home?: boolean }) {
   return (
     <>
-      <div className={classNames(styles.container, 'max-md:!w-full')}>
-        <header className="fixed top-0 left-0 w-full max-md:!w-full py-4 filter backdrop-blur-sm">
-          <div className="flex justify-between items-center w-[60vw] max-md:px-4 mx-auto">
-            <Link href={home ? '/about' : '/'} className="text-black dark:text-white">
-              <div className="flex items-center">
-                <img
-                  src="/images/profile.jpg"
-                  className={`w-8 h-8 rounded-full`}
-                  alt={name}
-                />
-                <span className="ml-2 text-xl font-bold ">{name}</span>
+      <div>
+        <Header home={home} />
+        <div className={classNames(styles.container, 'max-md:!w-full')}>
+          <main className="my-40">
+            {children}
+          </main>
+          {
+            !home && (
+              <div className="my-12">
+                <Link href="/">
+                  <span>← Back to home</span>
+                </Link>
               </div>
-            </Link>
-            <div className="flex items-center">
-              <ThemeToggle />
-              <LoginForm user={user} />
-            </div>
-          </div>
-        </header >
-        <main className="my-40">
-          {children}
-        </main>
-        {
-          !home && (
-            <div className="my-12">
-              <Link href="/">
-                <span>← Back to home</span>
-              </Link>
-            </div>
-          )
-        }
+            )
+          }
+        </div>
       </div >
       <canvas id="canvas" className="fixed top-0 left-0 w-full h-full z-[-1]" />
     </>
+  )
+}
+
+export async function Header({ home }: { home?: boolean }) {
+  const user = await getCurrentUser();
+
+  return (
+
+    <header className="sticky top-0 left-0 w-full py-2 filter backdrop-blur-sm">
+      <div className="px-4 flex w-[60vw] max-md:!w-full justify-between items-center mx-auto">
+        <Link href={home ? '/about' : '/'} className="text-black dark:text-white">
+          <div className="flex items-center">
+            <img
+              src="/images/profile.jpg"
+              className={`w-8 h-8 rounded-full`}
+              alt={name}
+            />
+            <span className="ml-2 text-xl font-bold ">{name}</span>
+          </div>
+        </Link>
+        <div className="flex items-center">
+          <ThemeToggle />
+          <LoginForm user={user} />
+        </div>
+      </div>
+    </header >
   )
 }

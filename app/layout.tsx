@@ -30,9 +30,10 @@ export default function RootLayout(props: {
           attribute="class"
           defaultTheme="light"
         >
-          {/* Layout UI */}
+          {/* 主要内容区域 */}
           {children}
-          {modal}
+          {/* 弹窗内容区域，用于显示模态框 */}
+          {/* {modal} */}
         </ThemeProvider>
       </body>
     </html>
