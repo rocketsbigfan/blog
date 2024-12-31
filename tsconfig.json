@@ -25,7 +25,6 @@
     "strictNullChecks": true,
     "paths": {
       "@/*": ["./app/*"],
-      "@/lib/*": ["./lib/*"],
       "@/components/*": ["./components/*"],
       "@/styles/*": ["./styles/*"]
     }

@@ -71,6 +71,7 @@ export type Database = {
           sub: string
           updated_at: string
           username: string
+          password: string
         }
         Insert: {
           avatar: string
@@ -81,6 +82,7 @@ export type Database = {
           sub: string
           updated_at?: string
           username: string
+          password: string
         }
         Update: {
           avatar?: string
@@ -91,6 +93,7 @@ export type Database = {
           sub?: string
           updated_at?: string
           username?: string
+          password?: string
         }
         Relationships: []
       }

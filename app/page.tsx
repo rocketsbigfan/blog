@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Layout from '../components/Layout/index.app';
-import { getSortedPostsData } from '../lib/posts';
+import { getSortedPostsData } from './lib/posts';
 
 import utilStyles from '../styles/utils.module.css';
 import Date from '../components/Date';

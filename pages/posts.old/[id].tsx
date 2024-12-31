@@ -10,8 +10,8 @@ import Layout from '../../components/Layout'
 import Date from '../../components/Date';
 import ImageWithZoom from '../../components/ImageWithZoom';
 import MDLink from '../../components/MDLink';
-import { getAllPostIds, getPostData } from '../../lib/posts';
-import { getBlogVisits, postBlogVisits } from '../../lib/api';
+import { getAllPostIds, getPostData } from '../../app/lib/posts';
+import { getBlogVisits, postBlogVisits } from '../../app/lib/api';
 
 import utilStyles from '../../styles/utils.module.css';
 
