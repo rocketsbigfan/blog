@@ -1,5 +1,5 @@
 // 'use client'
-import Layout from "../../components/Layout/index.app"
+import Layout from "../../../components/Layout/index.app"
 
 const About = () => {
   return (

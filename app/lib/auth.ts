@@ -34,7 +34,8 @@ export const authOptions: AuthOptions = {
           name: user.username,
           image: user.avatar,
           email: user.email,
-          id: user.id.toString(),
+          id: user.id.toString(), // 会转变成token的sub
+          provider: 'credentials',
         };
         
         return result;
@@ -47,6 +48,15 @@ export const authOptions: AuthOptions = {
       httpOptions: {
         timeout: 30000,
       },
+      profile(profile) {
+        return {
+          id: profile.id,
+          name: profile.name,
+          email: profile.email,
+          image: profile.avatar_url,
+          provider: 'github',
+        }
+      },
     }),
   ],  
   session: {
@@ -58,13 +68,14 @@ export const authOptions: AuthOptions = {
     error: '/auth/error',
   },
   callbacks: {
-    async jwt({ token, user, account, ...rest }) {
+    async jwt({ token, user, account }) {  
       return {
         ...token,
+        // id: user?.id ?? token.id,
         provider: token.provider || account?.provider,
       };
     },
-    async session({ session, token }) {
+    async session({ session, token, user }) {
       if (token.provider === 'github') {
         await upsertRecord<'user'>('user', {
           sub: token.sub as string
@@ -81,6 +92,12 @@ export const authOptions: AuthOptions = {
         }, (operation, data) => {
           console.log('operation: ', operation, data);
         });
+      }
+      if (session.user) {
+        // @ts-ignore
+        session.user.provider = token.provider;
+        // @ts-ignore
+        session.user.id = token.sub;
       }
       return session;
     },

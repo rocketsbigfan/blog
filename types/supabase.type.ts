@@ -74,12 +74,12 @@ export type Database = {
           password: string
         }
         Insert: {
-          avatar: string
+          avatar?: string
           created_at?: string
           email: string
           id?: number
-          platform: Database["public"]["Enums"]["platform_enum"]
-          sub: string
+          platform?: Database["public"]["Enums"]["platform_enum"]
+          sub?: string
           updated_at?: string
           username: string
           password: string

@@ -1,17 +1,18 @@
 'use client'
 import { signIn, signOut } from "next-auth/react";
-import { User } from "next-auth";
+import type { User } from "next-auth";
 import Image from "next/image";
-export default function LoginForm({ user }: { user?: Omit<User, 'id'> }) {
+import { span } from "motion/dist/react-client";
+export default function User({ user }: { user?: Omit<User, 'id'> }) {
   const handleLogin = () => {
     signIn('github', { // 登录方法，第一个参数标注平台
-      callbackUrl: `${window.location.origin}`, // 设置登录成功后的回调地址
+      callbackUrl: `${window.location.origin}/admin`, // 设置登录成功后的回调地址
     });
   }
 
   const handleLogout = () => {
     signOut({
-      callbackUrl: `${window.location.origin}`,
+      callbackUrl: `${window.location.origin}/sign-in`,
     });
   }
 
@@ -27,7 +28,7 @@ export default function LoginForm({ user }: { user?: Omit<User, 'id'> }) {
             height={30}
             className="rounded-full"
           />
-        ) : user.name?.[0]
+        ) : <span className="text-sm inline-flex w-[30px] h-[30px] justify-center items-center rounded-full bg-gray-200">{user.name?.[0]}</span>
       }
     </div>
   ) : (

@@ -84,7 +84,8 @@ export async function getStaticPaths() {
   const paths = await getAllPostIds();
   return {
     paths,
-    // true 表示在构建时不会生成所有路径，而是在运行时动态生成 ISG
+    // true 表示在构建时不会生成所有路径，而是在运行时动态生成 ISR
+    // false 表示在构建时生成所有路径，如果路径不存在，则返回404
     fallback: false, // 预构建，如果路径不存在，则返回404
   };
 }

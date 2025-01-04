@@ -12,7 +12,7 @@ body {
   font-size: 18px;
 }
 html:not(.dark) {
-  background-color: #e5e5e5;
+  background-color: #fff;
 }
 * {
   box-sizing: border-box;
