@@ -1,4 +1,5 @@
 import { ThemeProvider } from "next-themes"
+import { Toaster } from "@/components/ui/toaster"
 import '../styles/global.css'
 
 export const metadata = {
@@ -35,6 +36,7 @@ export default function RootLayout(props: {
           {/* 弹窗内容区域，用于显示模态框 */}
           {/* {modal} */}
         </ThemeProvider>
+        <Toaster />
       </body>
     </html>
   )

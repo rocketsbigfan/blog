@@ -3,7 +3,7 @@ import styles from './index.module.css';
 import Link from 'next/link';
 import ThemeToggle from '../ThemeToggle';
 import classNames from 'classnames';
-import LoginForm from '../LoginForm';
+// import LoginForm from '../LoginForm';
 import { getCurrentUser } from '@/lib/session';
 const name = 'Harden';
 
@@ -36,7 +36,7 @@ export default function Layout({ children, home }: { children?: React.ReactNode,
           {
             !home && (
               <div className="my-12">
-                <Link href="/">
+                <Link href="/blog">
                   <span>← Back to home</span>
                 </Link>
               </div>
@@ -50,13 +50,13 @@ export default function Layout({ children, home }: { children?: React.ReactNode,
 }
 
 export async function Header({ home }: { home?: boolean }) {
-  const user = await getCurrentUser();
+  // const user = await getCurrentUser();
 
   return (
 
     <header className="sticky top-0 left-0 w-full py-2 filter backdrop-blur-sm">
       <div className="px-4 flex w-[60vw] max-md:!w-full justify-between items-center mx-auto">
-        <Link href={home ? '/about' : '/'} className="text-black dark:text-white">
+        <Link href={home ? '/blog/about' : '/blog'} className="text-black dark:text-white">
           <div className="flex items-center">
             <img
               src="/images/profile.jpg"
@@ -68,7 +68,7 @@ export async function Header({ home }: { home?: boolean }) {
         </Link>
         <div className="flex items-center">
           <ThemeToggle />
-          <LoginForm user={user} />
+          {/* <LoginForm user={user} /> */}
         </div>
       </div>
     </header >

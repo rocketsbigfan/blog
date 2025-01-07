@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { supabase } from "../../lib/supabase"; // 导入 Supabase 客户端
+import { supabase } from "../../app/lib/supabase"; // 导入 Supabase 客户端
 
 // API 路由处理函数
 export default async function handler(

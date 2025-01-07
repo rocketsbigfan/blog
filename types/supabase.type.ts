@@ -71,16 +71,18 @@ export type Database = {
           sub: string
           updated_at: string
           username: string
+          password: string
         }
         Insert: {
-          avatar: string
+          avatar?: string
           created_at?: string
           email: string
           id?: number
-          platform: Database["public"]["Enums"]["platform_enum"]
-          sub: string
+          platform?: Database["public"]["Enums"]["platform_enum"]
+          sub?: string
           updated_at?: string
           username: string
+          password: string
         }
         Update: {
           avatar?: string
@@ -91,6 +93,7 @@ export type Database = {
           sub?: string
           updated_at?: string
           username?: string
+          password?: string
         }
         Relationships: []
       }

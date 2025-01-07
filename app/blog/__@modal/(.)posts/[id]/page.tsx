@@ -1,9 +1,9 @@
 import Date from "@/components/Date";
 import Modal from "@/components/Modal";
 import { getPostData } from "@/lib/posts";
-import Article from "@/posts/[id]/components/article";
-import View from "@/posts/[id]/components/view";
-import { PostData } from "@/posts/[id]/page";
+import Article from "@/blog/posts/[id]/components/article";
+import View from "@/blog/posts/[id]/components/view";
+import { PostData } from "@/blog/posts/[id]/page";
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
