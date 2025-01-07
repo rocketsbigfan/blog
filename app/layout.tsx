@@ -20,9 +20,12 @@ export const metadata = {
 }
 export default function RootLayout(props: {
   children: React.ReactNode
-  modal: React.ReactNode
+  // modal: React.ReactNode
 }) {
-  const { children, modal } = props
+  const { 
+    children, 
+    // modal 
+  } = props
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="w-full h-full">
