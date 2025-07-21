@@ -10,7 +10,7 @@ export default function RootLayout(props: {
       {/* 主要内容区域 */}
       {children}
       {/* 弹窗内容区域，用于显示模态框 */}
-      {/* {modal} */}
+      {modal}
     </>
   )
 }

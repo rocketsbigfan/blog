@@ -25,7 +25,7 @@ export default function Home({ allPostsData }: HomeProps) {
       </Head>
 
       <section className="text-2xl font-bold mb-4">
-        <p>Hao's Blog</p>
+        <p>Harden's Blog</p>
       </section>
 
       <main>
@@ -41,7 +41,6 @@ export default function Home({ allPostsData }: HomeProps) {
           </li>
         ))}
       </main>
-
     </Layout>
   );
 }
